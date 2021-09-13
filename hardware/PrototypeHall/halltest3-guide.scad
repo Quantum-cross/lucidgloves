@@ -1,22 +1,20 @@
-// This file is created by Robert Cross <@Quantum-cross> as a modification of
-// LucidVR/lucidgloves which is released under the MIT License.
-// See file LICENSE for details.
-
 hallthick = 1.60;
-hallheight = 5.50;
+hallheight = 6.0;
 hallwidth = 4.0 + 1;
 
 wallthick = .76;
 wallthick2 = 1.51;
 
-magnetthick = 1.0;
+//mil = 0.254;
 
-length = 10;
+magnetthick = 1.75 + .4;
+
+length = 12;
 
 //cube([length, wallthick2, hallheight]); // "bottom"
 
 guidesize=3;
-guide_d = 19;
+guide_d = 25;
 // channel outer wall
 
 difference(){
@@ -78,3 +76,20 @@ cube([length, wallthick+magnetthick, wallthick]);
 ////translate([wallthick+hallwidth*1.1,0, hallheight-1])
 //cube([hallwidth-wallthick, hallthick/2, 1]);
 //}
+
+module eyelet(){
+translate([length/2,0,hallheight+wallthick*2]){
+
+hull(){
+
+translate([0,-wallthick/2,0])
+rotate([-90,0,0])
+cylinder(d=2, h=magnetthick+wallthick*2, $fn=64);
+    
+translate([-1, -wallthick/2,-1])
+cube([2, magnetthick+wallthick*2, .1]);
+    
+}
+    
+}
+}
